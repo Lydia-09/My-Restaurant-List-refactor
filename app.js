@@ -33,6 +33,7 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   Restaurant.find()
   .lean()
+  .sort({ _id: 'desc' }) //asc
   .then(restaurants => res.render('index', { restaurants }))
   .catch(error => console.log(error))
 })
