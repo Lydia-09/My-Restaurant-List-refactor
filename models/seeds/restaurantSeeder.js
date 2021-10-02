@@ -1,14 +1,6 @@
-const mongoose = require('mongoose')
 const Restaurant = require('../restaurant')
 const seedData = require('./restaurant.json')
-
-mongoose.connect('mongodb://localhost/Restaurant-List')
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error!')
-})
+const db = require('../../config/mongoose')
 
 db.once('open', () => {
   seedData.results.forEach((item) => {
